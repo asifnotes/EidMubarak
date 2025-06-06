@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eid Mubarak</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #FDEB71 0%, #F8D800 100%);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      max-width: 600px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: #4B0082;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    p {
+      font-size: 1.125rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    .blessing {
+      font-size: 1rem;
+      color: #555;
+      margin-top: 1rem;
+      display: none;
+    }
+    .btn {
+      background: #4B0082;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .btn:hover {
+      background: #370060;
+    }
+    .confetti {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      width: 10px;
+      height: 10px;
+      background-color: #FFD700;
+      opacity: 0.8;
+      border-radius: 50%;
+      animation: fall 3s ease-in infinite;
+    }
+    @keyframes fall {
+      0% {
+        transform: translateX(0) translateY(0) scale(1);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateX(calc(-50vw + 50%)) translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 599px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+      .card {
+        padding: 1.5rem;
+      }
+    }
+
+    @media (min-width: 600px) and (max-width: 1023px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+      p {
+        font-size: 1.125rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      h1 {
+        font-size: 3rem;
+      }
+      p {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Eid Mubarak!</h1>
+    <p>May your home be filled with joy, your heart with peace, and your life with abundant blessings.</p>
+    <button class="btn" id="showBlessingBtn">Show Blessing</button>
+    <p class="blessing" id="blessingText">May Allah accept your fasts, prayers, and good deeds, and shower you with mercy and forgiveness. Enjoy sweet moments, cherished memories, and unwavering faith. Eid Mubarak!</p>
+  </div>
+
+  <script>
+    // Reveal the blessing text on button click
+    document.getElementById('showBlessingBtn').addEventListener('click', function() {
+      var blessing = document.getElementById('blessingText');
+      blessing.style.display = 'block';
+      for (var i = 0; i < 20; i++) {
+        var confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.backgroundColor = getRandomColor();
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+        confetti.style.transform = 'translateX(-50%)';
+        document.body.appendChild(confetti);
+        confetti.addEventListener('animationend', function() {
+          this.remove();
+        });
+      }
+    });
+
+    function getRandomColor() {
+      var colors = ['#FFD700', '#FF69B4', '#00BFFF', '#32CD32', '#FF4500', '#8A2BE2'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+  </script>
+</body>
+</html>
